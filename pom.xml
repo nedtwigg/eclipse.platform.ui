@@ -115,6 +115,30 @@
   </profiles>
 
   <build>
+    <plugins>
+      <plugin>
+        <!-- mvn equo-ide:launch (add -Dclean to start fresh if it gets messy)-->
+        <groupId>dev.equo.ide</groupId>
+        <artifactId>equo-ide-maven-plugin</artifactId>
+        <version>1.1.0</version>
+        <configuration>
+          <pde>
+            <missingApiBaseline>Ignore</missingApiBaseline>
+          </pde>
+          <m2e>
+            <autoImport>${project.basedir}</autoImport>
+          </m2e>
+          <platform>
+            <showLineNumbers>true</showLineNumbers>
+          </platform>
+          <!-- Add the test features to the running IDE for use in the target platform -->
+          <installs>
+            <install>org.eclipse.test.feature.group</install>
+          </installs>
+          <useAtomos>true</useAtomos>
+        </configuration>
+      </plugin>
+    </plugins>
     <pluginManagement>
       <plugins>
         <plugin>
